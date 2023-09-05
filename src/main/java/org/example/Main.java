@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.models.Polinomio;
 import org.example.utilerias.Utilerias;
 
 import java.util.*;
@@ -7,21 +8,27 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Utilerias utilerias = new Utilerias();
-        Map<String, List<Character>> exponente = new HashMap();
+        Polinomio polinomioF = new Polinomio();
         //String polinomio = "2x^(2-x)+3x";
         String polinomio = "-2x^(x+1)+3x+5x+4x^(x+4)";
         List<Character> polinomioLista = utilerias.guardarValoresEnLista(polinomio);
-        exponente = utilerias.exponente(polinomioLista);
-        //utilerias.base(exponente, polinomioLista);
-        // Entramos al Map y se recorre el list dentro de este Map
+        polinomioF = utilerias.getValuesPolinomio(polinomioLista);
 
-        exponente.forEach((k,v) -> {
-            System.out.println(k);
-            for (Character c: v
-                 ) {
-                System.out.println(c);
-            }
-        });
+        System.out.println("======Exponente======");
+        for (Character c: polinomioF.getExponente()
+             ) {
+            System.out.println(c);
+        }
+        System.out.println("======Base======");
+        for (Character c: polinomioF.getBase()
+        ) {
+            System.out.println(c);
+        }
+        System.out.println("======Posicion Exponente======");
+        for (Integer i: polinomioF.getPosicionExponente()
+        ) {
+            System.out.println(i);
+        }
 
 
 

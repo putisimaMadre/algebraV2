@@ -8,10 +8,7 @@ public class Polinomio {
     public List<Character> exponente = new ArrayList<>();
     public List<Character> base = new ArrayList<>();
 
-    public Polinomio(List<Integer> posicionExponente, List<Character> exponente, List<Character> base) {
-        this.posicionExponente = posicionExponente;
-        this.exponente = exponente;
-        this.base = base;
+    public Polinomio() {
     }
 
     public List<Integer> getPosicionExponente() {

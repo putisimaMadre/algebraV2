@@ -1,5 +1,7 @@
 package org.example.utilerias;
 
+import org.example.models.Polinomio;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,43 +17,38 @@ public class Utilerias {
         return valoresPolinomios;
     }
 
-    public Map<String, List<Character>> exponente(List<Character> polinomioLista){
+    public Polinomio getValuesPolinomio(List<Character> polinomioLista){
+        Polinomio polinomio = new Polinomio();
         boolean bandera = false;
         int numeroMonomios = 0;
         int index=0;
         List<Integer> posicionExponente = new ArrayList<>();
         List<Character> exponente = new ArrayList<>();
         List<Character> base = new ArrayList<>();
-        Map<String, List<Character>> respuesta = new HashMap<String, List<Character>>();
 
         for (char p: polinomioLista
         ) {
             if (p == '^'){
                 bandera = true;
             }
-
             if (bandera){
                 exponente.add(p);
                 if (p == ')'){
                     bandera = false;
                     posicionExponente.add(numeroMonomios);
-                    //System.out.println("Posicion exp"+posicionExponente);
                 }
             }else{
                 if (p == '+' || p == '-' && index != 0){
                     numeroMonomios++;
                 }
-                //System.out.println("num: "+numeroMonomios);
                 base.add(p);
             }
             index++;
         }//for
-        respuesta.put("exponente", exponente);
-        respuesta.put("base", base);
-        System.out.println("Posicion exponenete: "+posicionExponente);
-
-        //respuesta.put("posicionExp", posicionExponente);
-        return respuesta;
+        polinomio.setExponente(exponente);
+        polinomio.setBase(base);
+        polinomio.setPosicionExponente(posicionExponente);
+        return polinomio;
     }
 
     public int cuentaMonomios(List<Character> polinomioLista){
