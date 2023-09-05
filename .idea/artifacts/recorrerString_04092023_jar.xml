@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="recorrerString_04092023:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/recorrerString_04092023_jar</output-path>
+    <root id="archive" name="recorrerString_04092023.jar">
+      <element id="module-output" name="Algebra_04092023" />
+    </root>
+  </artifact>
+</component>
