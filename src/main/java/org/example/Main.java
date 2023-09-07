@@ -10,46 +10,18 @@ public class Main {
         Utilerias utilerias = new Utilerias();
         Polinomio polinomioF = new Polinomio();
         //String polinomio = "2x^(2-x)+3x";
-        String polinomio = "-2x^(x+1)+3x+5x+4x^(x+4)";
-        List<Character> polinomioLista = utilerias.guardarValoresEnLista(polinomio);
-        polinomioF = utilerias.getValuesPolinomio(polinomioLista);
+        //String polinomio = "-2x^(x+1)+3x+5x+4x^(x+4)";
+        String polinomio = "-2x+3x^(x+1)+5x^(x+2)+4x";
 
-        System.out.println("======Exponente======");
-        for (Character c: polinomioF.getExponente()
-             ) {
-            System.out.println(c);
-        }
-        System.out.println("======Base======");
-        for (Character c: polinomioF.getBase()
-        ) {
-            System.out.println(c);
-        }
-        System.out.println("======Posicion Exponente======");
-        for (Integer i: polinomioF.getPosicionExponente()
-        ) {
-            System.out.println(i);
-        }
-
-
-
-
-
-
-
-        /*int numeroDeMonomios = utilerias.cuentaMonomios(polinomio);
-        String [] monomios = new String [numeroDeMonomios];
-        int j=0;*/
-
-        /*List<String> elementos = new ArrayList<>();
-        for (int i = 0; i < polinomio.length(); i++) {
-            elementos.add(String.valueOf(polinomio.charAt(i)));
-            if (String.valueOf(polinomio.charAt(i)).equals("+") || String.valueOf(polinomio.charAt(i)).equals("-")){
-                monomios[j] = elementos.toString();
-                System.out.println(monomios[j]);
-                System.out.println("---------------------");
-                j++;
+        //=====PROBAR getExponente=====
+        /*utilerias.getExponente(polinomio).forEach((k,v) -> {
+            System.out.println("Key: " + k);
+            for (String s:v
+                 ) {
+                System.out.println(s);
             }
-            System.out.println(polinomio.charAt(i));
-        }*/
+        });*/
+        utilerias.getBase(polinomio);
+
     }
 }

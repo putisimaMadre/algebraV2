@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Utilerias {
 
-    public List<Character> guardarValoresEnLista(String polinomio){
+    private List<Character> guardarValoresEnLista(String polinomio){
         List<Character> valoresPolinomios = new ArrayList<>();
         for (int i = 0; i < polinomio.length(); i++) {
             valoresPolinomios.add(polinomio.charAt(i));
@@ -17,7 +17,8 @@ public class Utilerias {
         return valoresPolinomios;
     }
 
-    public Polinomio getValuesPolinomio(List<Character> polinomioLista){
+    private Polinomio getValuesPolinomio(String polinomioString){
+        List<Character>polinomioList = guardarValoresEnLista(polinomioString);
         Polinomio polinomio = new Polinomio();
         boolean bandera = false;
         int numeroMonomios = 0;
@@ -26,7 +27,7 @@ public class Utilerias {
         List<Character> exponente = new ArrayList<>();
         List<Character> base = new ArrayList<>();
 
-        for (char p: polinomioLista
+        for (char p: polinomioList
         ) {
             if (p == '^'){
                 bandera = true;
@@ -51,39 +52,33 @@ public class Utilerias {
         return polinomio;
     }
 
-    public int cuentaMonomios(List<Character> polinomioLista){
-        int numeroMonomios=0;
-        List<Character> base = new ArrayList<>();
-        for (char p: polinomioLista
-        ) {
-            if (p == '+' || p == '-'){
-                numeroMonomios++;
+    public Map<List<Integer>, String[]> getExponente(String polinomio){
+        Map<List<Integer>, String []> resultado = new HashMap<>();
+        List<Character> exponentesOrigen = getValuesPolinomio(polinomio).getExponente();
+        List<Integer> posicionExponente = getValuesPolinomio(polinomio).getPosicionExponente();
+        String [] exponentes = new String[posicionExponente.size()];
+        int noBinomio = 0;
+        int index = 0;
+        exponentes[0] = "";
+        for (Character e: exponentesOrigen
+             ) {
+            if (e == '^' && index != 0){
+                noBinomio++;
+                exponentes[noBinomio] = "";
+            }else if(e != '(' && e != ')' && e != '^'){
+                exponentes[noBinomio] = exponentes[noBinomio] + e;
             }
-        }//for
-        return numeroMonomios;
+            index++;
+        }
+        resultado.put(posicionExponente, exponentes);
+        return resultado;
     }
 
-    public List<Character> base(Map<List<Character>, Boolean> exponente, List<Character> polinomioLista){
-        Boolean tieneExponente = false;
-        List<Character> base = new ArrayList<>();
-
-        for (Map.Entry<List<Character>, Boolean> entry : exponente.entrySet()) {
-            List<Character> k = entry.getKey();
-            tieneExponente = entry.getValue();
-        }
-        System.out.println(tieneExponente);
-
-        for (int i = 0; i < polinomioLista.size(); i++) {
-            //"2x^(2-x)+3x"
-
-            if (tieneExponente){
-                base.add(polinomioLista.get(i));
-            }
-
-        }
-        //System.out.println(base);
-
-        return base;
-    }//Base
-
+    //public Map<List<Integer>, String[]> getBase(String polinomio){
+    public void getBase(String polinomio){
+        List<Character> base = getValuesPolinomio(polinomio).getBase();
+        List<Integer> posicionExponente = getValuesPolinomio(polinomio).getPosicionExponente();
+        //Map<List<Integer>, String []> resultado = new HashMap<>();
+        System.out.println(base);
+    }
 }
