@@ -8,6 +8,8 @@ public class Polinomio {
     public List<Character> exponente = new ArrayList<>();
     public List<Character> base = new ArrayList<>();
 
+    List<Character> baseExactaDeExponente = new ArrayList<>();
+
     public Polinomio() {
     }
 
@@ -33,5 +35,13 @@ public class Polinomio {
 
     public void setBase(List<Character> base) {
         this.base = base;
+    }
+
+    public List<Character> getBaseExactaDeExponente() {
+        return baseExactaDeExponente;
+    }
+
+    public void setBaseExactaDeExponente(List<Character> baseExactaDeExponente) {
+        this.baseExactaDeExponente = baseExactaDeExponente;
     }
 }
